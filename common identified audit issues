@@ -21,13 +21,13 @@ this is a barrier more to the Screen reader users.most of the tyime the users ha
 Practical solutions 
  The programmers should Use descriptive text that explains the destination of the link even when read out of context it cam still make meaninig.
 
-4.Fixed-Sized Text and Layout Breakage on Zoom
+4.Visual Layout Order
 Who is affected
-Users with low vision who need to enlarge text to read comfortably re the cluprits for this issue.
+the users navigating via keyboard or switch access controllers.
 The barrier
-If font sizes are styled using rigid pixels (px) instead of relative units (rem or em), the text may fail to resize when a user zooms in. Alternatively, if the layout is not responsive, zooming up to 200% might cause sentences to overlap or slide off the edge of the screen without a horizontal scrollbar.
-Practical solution
-Define all typography using relative scaling units (rem) and build responsive layouts using CSS Flexbox or Grid so the content reflows cleanly when zoomed.
+When developers use CSS styles elements, it changes where things look like they are without changing their order.
+Practical improvement
+Ensure that the underlying HTML structure follows the logical visual reading flow (left-to-right, top-to-bottom) before applying CSS visual arrangements.
 
 5.Time Limits Without Extension Options
 Who is affected
