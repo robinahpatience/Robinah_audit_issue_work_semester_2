@@ -1,1 +1,38 @@
+1.Low Color ContrastWho is affected 
+This affects the Users with low vision,color blindness, or those viewing the screen in bright environments under direct sun.
+The barrier
+Such Text elements that blend into the background like the bakground colours make the reall contet become unreadable, preventing users from accessing informationwith more easy 
+Recommended Practical solutions 
+Increase the contrast ratio to allow the intented content more visibble by darkening the font color more bright or changing the background to dull.
 
+2.Keyboard Inaccessibility
+Who is affected
+The Users with motor disabilities who cannot use a mouse, as well as screen reader users who navigate via keyboard shortcuts.
+The barrier
+If interactive elements such as buttons, links, or form fields lack a visible focus indicator, users cannot see which element they are currently interacting with.
+Practical solutions 
+Programers Avoid using CSS rules,  unless you replace it with a highly visible custom and focused state style.
+
+3.Non-Descriptive Link Text
+Who is affected
+This affects  users who are blind or visually impaired using screen readers
+The barrier
+this is a barrier more to the Screen reader users.most of the tyime the users have no idea  where each link leads without reading the entire it more in details.
+Practical solutions 
+ The programmers should Use descriptive text that explains the destination of the link even when read out of context it cam still make meaninig.
+
+4.Fixed-Sized Text and Layout Breakage on Zoom
+Who is affected
+Users with low vision who need to enlarge text to read comfortably re the cluprits for this issue.
+The barrier
+If font sizes are styled using rigid pixels (px) instead of relative units (rem or em), the text may fail to resize when a user zooms in. Alternatively, if the layout is not responsive, zooming up to 200% might cause sentences to overlap or slide off the edge of the screen without a horizontal scrollbar.
+Practical solution
+Define all typography using relative scaling units (rem) and build responsive layouts using CSS Flexbox or Grid so the content reflows cleanly when zoomed.
+
+5.Time Limits Without Extension Options
+Who is affected
+it affects users with cognitive processing delays, learning disabilities, or non-native language speakers.
+The barrier
+ that abruptly time out and wipe out user data without warning cause stress and discurages slower users from finishing tasks.
+Practical possible solution
+Provide a warning modal at least for some fews seconds before a timeout occurs, giving the user a chance to extend the time limit.
