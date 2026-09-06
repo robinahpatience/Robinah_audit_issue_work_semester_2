@@ -27,7 +27,7 @@ the users navigating via keyboard or switch access controllers.
 The barrier
 When developers use CSS styles elements, it changes where things look like they are without changing their order.
 Practical improvement
-Ensure that the underlying HTML structure follows the logical visual reading flow (left-to-right, top-to-bottom) before applying CSS visual arrangements.
+Ensure that the underlying HTML structure follows the logical visual reading flow  before applying CSS visual arrangements.
 
 5.Time Limits Without Extension Options
 Who is affected
