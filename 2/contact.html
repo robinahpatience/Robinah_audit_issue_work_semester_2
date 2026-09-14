@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Reservations — JK Restaurant</title>
+  <meta name="description" content="Contact JK Restaurant in Mukono or book a table using our online reservation form.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript>
+    <style>.primary-nav[hidden] { display: block; } .nav-toggle { display: none; }</style>
+  </noscript>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__bar">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">JK</span> Restaurant
+      </a>
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="nav-toggle__icon" aria-hidden="true">☰</span>
+        <span>Menu</span>
+      </button>
+    </div>
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary" hidden>
+      <div class="wrap">
+        <ul class="primary-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact &amp; reservations</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="section--tight">
+      <div class="wrap">
+        <h1>Contact &amp; reservations</h1>
+        <p>Reach out with a question, or book a table using the form below. We reply to reservation requests within one working day.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="details-heading">
+      <div class="wrap split">
+        <div>
+          <h2 id="details-heading">Get in touch</h2>
+          <dl class="contact-details">
+            <div>
+              <dt>Address</dt>
+              <dd>Kampala Road, Mukono Town, Uganda</dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+256700000000">+256 700 000 000</a></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:hello@jkrestaurant.example">hello@jkrestaurant.example</a></dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd>Tuesday–Sunday, 11:00–22:00. Closed on Mondays.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <h2 id="form-heading">Book a table</h2>
+          <form class="form" action="#" method="post" aria-labelledby="form-heading">
+
+            <div class="form-row">
+              <label for="full-name">Full name</label>
+              <input type="text" id="full-name" name="full-name" autocomplete="name" required>
+            </div>
+
+            <div class="form-row form-row--split">
+              <div class="form-row" style="margin-bottom: 0;">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div class="form-row" style="margin-bottom: 0;">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div class="form-row form-row--split">
+              <div class="form-row" style="margin-bottom: 0;">
+                <label for="date">Preferred date</label>
+                <input type="date" id="date" name="date" required>
+              </div>
+              <div class="form-row" style="margin-bottom: 0;">
+                <label for="time">Preferred time</label>
+                <input type="time" id="time" name="time" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="party-size">Number of guests</label>
+              <input type="number" id="party-size" name="party-size" min="1" max="20" value="2" required>
+            </div>
+
+            <fieldset>
+              <legend>Seating preference</legend>
+              <div class="radio-option">
+                <input type="radio" id="seating-indoor" name="seating" value="indoor" checked>
+                <label for="seating-indoor">Indoor dining room</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="seating-outdoor" name="seating" value="outdoor">
+                <label for="seating-outdoor">Outdoor garden seating</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="seating-no-preference" name="seating" value="no-preference">
+                <label for="seating-no-preference">No preference</label>
+              </div>
+            </fieldset>
+
+            <div class="form-row">
+              <label for="message">Notes for us</label>
+              <textarea id="message" name="message" rows="4" aria-describedby="message-hint" placeholder="Allergies, special occasions, or anything else we should know."></textarea>
+              <p class="hint" id="message-hint">Optional — let us know about allergies or special requests.</p>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Request reservation</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__grid">
+      <div>
+        <h2>JK Restaurant</h2>
+        <p>Kampala Road, Mukono Town, Uganda</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="menu.html">Our menu</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact and reservations</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap site-footer__bottom">
+      <p>&copy; 2026 JK Restaurant, Mukono. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

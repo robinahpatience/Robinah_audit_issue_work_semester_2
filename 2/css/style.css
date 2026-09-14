@@ -1,0 +1,635 @@
+/* =========================================================
+   JK Restaurant — stylesheet
+   Mobile-first. Base styles target small screens; layout is
+   progressively enhanced at 640px and 900px breakpoints.
+   ========================================================= */
+
+/* ---- Design tokens ---- */
+:root {
+  --color-bg: #241712;          /* deep coffee brown */
+  --color-surface: #2f1f18;     /* slightly lighter panel */
+  --color-surface-alt: #3a271e;
+  --color-text: #f3e9dc;        /* warm parchment */
+  --color-text-muted: #cbb9a4;
+  --color-accent: #e08c2b;      /* sunset amber */
+  --color-accent-soft: #f0b869;
+  --color-leaf: #6f8f5b;        /* banana-leaf green */
+  --color-border: #4a352a;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --space-2xs: 0.375rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 2rem;
+  --space-lg: 3.25rem;
+  --space-xl: 5rem;
+
+  --radius: 6px;
+  --max-width: 74rem;
+  --content-width: 42rem;
+}
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--color-accent-soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 var(--space-sm);
+  max-width: 38em;
+}
+
+/* ---- Accessible focus state ----
+   Visible on every interactive element, keyboard or otherwise,
+   using :focus-visible so mouse clicks stay uncluttered. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent-soft);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- Skip link ---- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-accent);
+  color: #241712;
+  padding: var(--space-xs) var(--space-sm);
+  z-index: 100;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---- Layout helpers ---- */
+.wrap {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+}
+
+.section {
+  padding-block: var(--space-lg);
+}
+
+.section--tight {
+  padding-block: var(--space-md);
+}
+
+/* ---- Site header & navigation ---- */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-xs);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--color-accent-soft);
+}
+
+.brand__mark {
+  color: var(--color-accent);
+}
+
+.nav-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  padding: var(--space-2xs) var(--space-xs);
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.nav-toggle__icon {
+  font-size: 1.1rem;
+}
+
+.primary-nav {
+  border-top: 1px solid var(--color-border);
+}
+
+.primary-nav[hidden] {
+  display: none;
+}
+
+.primary-nav__list {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--space-xs);
+}
+
+.primary-nav__list a {
+  display: block;
+  padding: var(--space-xs) var(--space-2xs);
+  text-decoration: none;
+  color: var(--color-text);
+  border-radius: var(--radius);
+}
+
+.primary-nav__list a:hover {
+  background-color: var(--color-surface-alt);
+  color: var(--color-accent-soft);
+}
+
+.primary-nav__list a[aria-current="page"] {
+  color: var(--color-accent);
+  font-weight: 600;
+  position: relative;
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding-block: var(--space-xl) var(--space-lg);
+}
+
+.hero__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.hero__eyebrow {
+  color: var(--color-leaf);
+  font-weight: 600;
+  margin: 0 0 var(--space-xs);
+}
+
+.hero__lede {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: #241712;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-soft);
+  color: #241712;
+}
+
+.btn--ghost {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent-soft);
+  color: var(--color-accent-soft);
+}
+
+/* ---- Info card strip (hours / location) ---- */
+.info-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+.info-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+}
+
+.info-card h3 {
+  color: var(--color-accent-soft);
+  margin-bottom: var(--space-2xs);
+}
+
+.info-card p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ---- Feature / highlight grid ---- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.dish-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.dish-card__art {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--color-surface-alt), var(--color-bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dish-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dish-card__body {
+  padding: var(--space-sm);
+}
+
+.dish-card__price {
+  color: var(--color-accent-soft);
+  font-weight: 600;
+}
+
+/* ---- Section with alternate surface ---- */
+.section--surface {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---- Testimonial / aside ---- */
+.testimonial {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-text);
+}
+
+.testimonial footer {
+  margin-top: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Two column layout (used on About & Menu) ---- */
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.split > * {
+  flex: 1;
+}
+
+/* ---- Menu listing ---- */
+.menu-group {
+  margin-bottom: var(--space-lg);
+}
+
+.menu-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+.menu-item__name {
+  color: var(--color-text);
+  font-weight: 600;
+  margin: 0;
+}
+
+.menu-item__desc {
+  color: var(--color-text-muted);
+  margin: var(--space-2xs) 0 0;
+  max-width: 32em;
+}
+
+.menu-item__price {
+  color: var(--color-accent-soft);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---- Forms ---- */
+.form {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  max-width: 38rem;
+}
+
+.form-row {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row--split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: var(--space-2xs);
+}
+
+.form-row .hint {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2xs);
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-xs);
+  width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-sm);
+  margin: 0 0 var(--space-sm);
+}
+
+legend {
+  font-weight: 600;
+  padding-inline: var(--space-2xs);
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-xs);
+}
+
+.radio-option input {
+  width: auto;
+}
+
+.form .btn--primary {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* ---- Contact details list ---- */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.contact-details dt {
+  color: var(--color-accent-soft);
+  font-weight: 600;
+}
+
+.contact-details dd {
+  margin: var(--space-2xs) 0 0;
+  color: var(--color-text-muted);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+.site-footer__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.site-footer h2 {
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--color-accent-soft);
+}
+
+.site-footer__bottom {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   Breakpoint: tablets and up
+   ========================================================= */
+@media (min-width: 640px) {
+  .info-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row--split {
+    flex-direction: row;
+  }
+
+  .site-footer__grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* =========================================================
+   Breakpoint: desktop and up
+   Navigation switches from a toggled mobile menu to a
+   permanently visible horizontal bar.
+   ========================================================= */
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav[hidden] {
+    display: block;
+  }
+
+  .primary-nav {
+    border-top: none;
+  }
+
+  .primary-nav__list {
+    flex-direction: row;
+    gap: var(--space-sm);
+    padding-block: 0;
+  }
+
+  .primary-nav__list a[aria-current="page"]::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin-top: 2px;
+  }
+
+  .hero__grid {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero__main {
+    flex: 1.2;
+  }
+
+  .hero__aside {
+    flex: 1;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .split {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1100px) {
+  .section {
+    padding-block: calc(var(--space-xl) + 1rem);
+  }
+}
